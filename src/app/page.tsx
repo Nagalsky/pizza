@@ -1,10 +1,11 @@
-import { Button } from '@/components/ui/button'
+import { Title } from '@/components/common'
 
 export default function Home() {
 	return (
-		<div className=''>
-			<p>ololo</p>
-			<Button>Im a button</Button>
+		<div className='container py-10'>
+			<Title size='lg' className='font-extrabold'>
+				Все пиццы
+			</Title>
 		</div>
 	)
 }
