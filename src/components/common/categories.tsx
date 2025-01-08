@@ -1,32 +1,53 @@
-'use client'
+"use client";
 
-import { cn } from '@/lib/utils'
-import React from 'react'
+import { cn } from "@/lib/utils";
+import { useCategoryStore } from "@/store";
+import React from "react";
 
 interface Props {
-	className?: string
+  className?: string;
 }
 
-const cats = ['Пиццы', 'Напитки', 'Закуски', 'Десерты', 'Соусы', 'Салаты']
-const activeIndex = 0
+const categories = [
+  { id: 1, name: "Пиццы" },
+  { id: 2, name: "Завтраки" },
+  { id: 3, name: "Закуски" },
+  { id: 4, name: "Десерты" },
+  { id: 5, name: "Соусы" },
+  { id: 6, name: "Салаты" },
+];
 
 export const Categories: React.FC<Props> = ({ className }) => {
-	return (
-		<div
-			className={cn('inline-flex gap-1 bg-gray-50 p-1 rounded-2xl', className)}
-		>
-			{cats.map((cat, index) => (
-				<a
-					key={index}
-					className={cn(
-						'flex items-center font-bold h-11 rounded-2xl px-5',
-						activeIndex === index &&
-							'bg-white shadow-md shadow-gray-200 text-primary'
-					)}
-				>
-					{cat}
-				</a>
-			))}
-		</div>
-	)
-}
+  const { activeId } = useCategoryStore((state) => state);
+  React.useEffect(() => {
+    const applyScrollMargin = () => {
+      categories.forEach(({ name }) => {
+        const element = document.getElementById(name);
+        if (element) {
+          element.style.scrollMarginTop = "100px";
+        }
+      });
+    };
+
+    applyScrollMargin();
+  }, []);
+  return (
+    <div
+      className={cn("inline-flex gap-1 rounded-2xl bg-gray-50 p-1", className)}
+    >
+      {categories.map(({ id, name }) => (
+        <a
+          key={id}
+          href={`#${name}`}
+          className={cn(
+            "flex h-11 items-center rounded-2xl px-5 font-bold",
+            activeId === id &&
+              "bg-white text-primary shadow-md shadow-gray-200",
+          )}
+        >
+          {name}
+        </a>
+      ))}
+    </div>
+  );
+};

@@ -1,6 +1,5 @@
 import { cn } from "@/lib/utils";
-import { Categories } from "./categories";
-import { SortPopup } from "./sort-popup";
+import { Categories, SortPopup } from ".";
 
 interface Props {
   className?: string;
