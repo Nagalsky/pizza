@@ -28,12 +28,15 @@ const RangeSlider = React.forwardRef(
     }: SliderProps,
     ref,
   ) => {
-    const initialValue = Array.isArray(value) ? value : [min, max];
-    const [localValues, setLocalValues] = React.useState(initialValue);
+    const [localValues, setLocalValues] = React.useState<number[]>(
+      Array.isArray(value) ? value : [min, max],
+    );
 
     React.useEffect(() => {
-      setLocalValues(Array.isArray(value) ? value : [min, max]);
-    }, [min, max, value]);
+      if (Array.isArray(value)) {
+        setLocalValues(value);
+      }
+    }, [value, min, max]);
 
     const handleValueChange = (newValues: number[]) => {
       setLocalValues(newValues);

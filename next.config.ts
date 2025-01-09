@@ -8,6 +8,11 @@ const nextConfig: NextConfig = {
         hostname: "media.dodostatic.net",
         pathname: `/image/r:*/*`,
       },
+      {
+        protocol: "https",
+        hostname: "cdn.dodostatic.net",
+        pathname: `/static/Img/Ingredients/*/*`,
+      },
     ],
   },
 };

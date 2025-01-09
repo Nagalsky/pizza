@@ -14,7 +14,6 @@ interface Props {
   loading?: boolean;
   searchInputPlaceholder?: string;
   onClickCheckbox?: (id: string) => void;
-  defaultValue?: string[];
   selected?: Set<string>;
   className?: string;
   name?: string;
@@ -68,6 +67,7 @@ export const CheckboxFiltersGroup: React.FC<Props> = ({
         <div className="mb-5">
           <Input
             onChange={onChangeSearchInput}
+            value={searchValue}
             placeholder={searchInputPlaceholder}
             className="border-none bg-gray-50"
           />

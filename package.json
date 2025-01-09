@@ -9,7 +9,11 @@
     "lint": "next lint",
     "prisma:push": "prisma db push",
     "prisma:studio": "prisma studio",
+    "prisma:seed": "prisma db seed",
     "postinstall": "prisma generate"
+  },
+  "prisma": {
+    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
@@ -22,6 +26,8 @@
     "@radix-ui/react-separator": "^1.1.1",
     "@radix-ui/react-slider": "^1.2.2",
     "@radix-ui/react-slot": "^1.1.1",
+    "axios": "^1.7.9",
+    "bcrypt": "^5.1.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.469.0",
@@ -34,12 +40,14 @@
     "react-use": "^17.6.0",
     "tailwind-merge": "^2.6.0",
     "tailwindcss-animate": "^1.0.7",
+    "ts-node": "^10.9.2",
     "vaul": "^1.1.2",
     "zod": "^3.24.1",
     "zustand": "^5.0.3"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@types/bcrypt": "^5.0.2",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
